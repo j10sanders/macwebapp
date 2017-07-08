@@ -7,6 +7,7 @@ import pygal
 from pygal.style import DefaultStyle
 import sys
 import numpy
+from imp import reload
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
