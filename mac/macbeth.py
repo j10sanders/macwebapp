@@ -20,7 +20,3 @@ def acts(tree):
         if child.tag == "ACT": 
             speeches(child, values)
     return values
-
-
-#acts(tree.getroot())
-#print(values)
