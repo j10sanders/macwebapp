@@ -3,3 +3,4 @@ mistune
 pygal
 numpy
 flask-script
+gunicorn
