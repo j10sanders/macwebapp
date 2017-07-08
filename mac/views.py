@@ -30,14 +30,12 @@ def results():
     top_title = "Number of lines per charcter (with lines above median)"
     top_half = pygal.Bar(width=1200,
         height=600, title=top_title,)
-    top_half.force_uri_protocol = 'http'
     for k, v in sorted(above, key=lambda character: character[1], reverse=True):
         top_half.add(k, [{'value': v, 'label': k}])
     
     bottom_title = "Number of lines per charcter (with lines below median)"
     bottom_half = pygal.Bar(width=1200,
         height=600, title=bottom_title,)
-    bottom_half.force_uri_protocol = 'https'
     for k, v in sorted(below, key=lambda character: character[1], reverse=True):
         bottom_half.add(k, [{'value': v, 'label': k}])
     
