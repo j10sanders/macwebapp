@@ -1,7 +1,12 @@
-flask
+Flask
 mistune
 pygal
 numpy
-flask-script
+Flask-Script
 requests
 gunicorn
+Werkzeug
+click
+itsdangerous
+Jinja2
+splinter
