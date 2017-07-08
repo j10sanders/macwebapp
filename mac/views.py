@@ -5,7 +5,6 @@ import xml.etree.ElementTree as ET
 from . import macbeth
 import pygal
 from pygal.style import DefaultStyle
-import sys
 import numpy
 
 
@@ -24,7 +23,7 @@ def results():
     response = requests.get(url)
     tree = ET.fromstring(response.content)
     results = macbeth.acts(tree)
-    median = numpy.median(numpy.array(results.values()))
+    median = numpy.median(numpy.array(list(results.values())))
     above = [x for x in results.items() if x[1] > median]
     below = [x for x in results.items() if x[1] <= median]
     
