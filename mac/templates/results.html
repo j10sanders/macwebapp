@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
+    {% if error is defined %}
+    <div class="alert alert-danger" role="alert">
+      {{error}}
+    </div>
+    
+    {% else %}
 
 <embed type="image/svg+xml" src={{top_half|safe}} />
 
 
 <embed type="image/svg+xml" src={{bottom_half|safe}} />
+    {% endif %}
 </div>
 {% endblock %}

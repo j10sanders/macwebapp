@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>
-    Each character's lines per play
-</h1>
-<br>
+
+
 <form role="form" method="POST">
     <div class="col-xs-6">
-        <label for="play">Play's Url (leave blank for Macbeth):</label>
+        <h1>
+            Each character's lines per play
+        </h1>
+        <br>
+        <label for="play">Enter a play's XML URL (leave blank for Macbeth):</label>
         <input type="text" class="form-control" id="play" name="play" placeholder="http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml">
     <br>
   <button type="submit" class="btn btn-primary btn-md" onclick = "return check();">Submit</button>

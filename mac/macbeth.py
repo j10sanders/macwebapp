@@ -1,22 +1,22 @@
 import xml.etree.ElementTree as ET
 
-def speeches(act, values):
+def speeches(act, result):
     speech = act.findall('SCENE/SPEECH')
     for x in speech:
         speakers = x.findall('SPEAKER')
         lines = x.findall('LINE')
-        for s in speakers:
-            if s.text == 'ALL':
+        for speaker in speakers:
+            if speaker.text == 'ALL':
                 pass
-            elif s.text.title() in values:
-                values[s.text.title()] += len(lines)
+            elif speaker.text.title() in result:
+                result[speaker.text.title()] += len(lines)
             else:
-                values[s.text.title()] = len(lines)
-    return values
+                result[speaker.text.title()] = len(lines)
+    return result
 
 def acts(tree):
-    values = {}
+    result = {}
     for child in tree:
         if child.tag == "ACT": 
-            speeches(child, values)
-    return values
+            speeches(child, result)
+    return sorted(result.items(), key=lambda char: char[1], reverse=True)

@@ -5,8 +5,6 @@ import xml.etree.ElementTree as ET
 from . import macbeth
 import pygal
 from pygal.style import DefaultStyle
-import numpy
-
 
 @app.route("/", methods=["GET"])
 def select():
@@ -19,26 +17,34 @@ def results():
     else:
         url = 'http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml'
     
-    response = requests.get(url)
-    tree = ET.fromstring(response.content)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.RequestException as e:
+        return render_template("results.html", error = e)
+    try:
+        tree = ET.fromstring(response.content)
+    except ET.ParseError:
+        return render_template("results.html", 
+            error = "That url doesn't have the right xml format :("
+        )
+
     results = macbeth.acts(tree)
-    median = numpy.median(numpy.array(list(results.values())))
-    above = [x for x in results.items() if x[1] > median]
-    below = [x for x in results.items() if x[1] <= median]
+    median = results[len(results)//2][1]
+    above = [x for x in results if x[1] > median]
+    below = [x for x in results if x[1] <= median]
     
-    top_title = "Number of lines per charcter (with lines above median)"
+    top_title = "Number of lines per character (with lines above median)"
     top_half = pygal.Bar(width=1200,
         height=600, title=top_title,)
-    for k, v in sorted(above, key=lambda character: character[1], reverse=True):
+    for k, v in above:
         top_half.add(k, [{'value': v, 'label': k}])
+    top_half = top_half.render_data_uri()
     
-    bottom_title = "Number of lines per charcter (with lines below median)"
+    bottom_title = "Number of lines per character (with lines below median)"
     bottom_half = pygal.Bar(width=1200,
         height=600, title=bottom_title,)
-    for k, v in sorted(below, key=lambda character: character[1], reverse=True):
+    for k, v in below:
         bottom_half.add(k, [{'value': v, 'label': k}])
-    
-    top_half = top_half.render_data_uri()
     bottom_half = bottom_half.render_data_uri()
     
     return render_template("results.html",
