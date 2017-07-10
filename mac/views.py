@@ -28,7 +28,7 @@ def results():
             error = "That url doesn't have the right xml format :("
         )
 
-    results = macbeth.acts(tree)
+    results = macbeth.parse_play(tree)
     median = results[len(results)//2][1]
     above = [x for x in results if x[1] > median]
     below = [x for x in results if x[1] <= median]

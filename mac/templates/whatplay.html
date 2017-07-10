@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+        <form role="form" method="POST">
+        <p class="input-group">
+            <h2 class="text-center">
+                Analyze Shakespear!
+            </h2>
+            <br>
+            <input type="text" class="form-control input-lg" id="play" name="play" placeholder="http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml">
+            <p class="help-block"><small>Enter a play's XML URL (leave blank for Macbeth).</small></p>
+            <p class="text-center"><button type="submit" class="btn btn-success btn-lg">Submit URL</button></p>
+        </p>
+        </form>
+    </div>
+</div>
 
-<form role="form" method="POST">
-    <div class="col-xs-6">
-        <h1>
-            Each character's lines per play
-        </h1>
-        <br>
-        <label for="play">Enter a play's XML URL (leave blank for Macbeth):</label>
-        <input type="text" class="form-control" id="play" name="play" placeholder="http://www.ibiblio.org/xml/examples/shakespeare/macbeth.xml">
-    <br>
-  <button type="submit" class="btn btn-primary btn-md" onclick = "return check();">Submit</button>
-  </div>
-  
-</form>
 
 {% endblock %}

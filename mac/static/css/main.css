@@ -1,4 +1,15 @@
-div.metadata {
-    margin-top: 20px;
-    font-size: 1.5em;
-}
+body {
+			padding-top: 20px;
+			font-size: 16px;
+			font-family: "Open Sans",serif;
+		}
+
+		h1 {
+			font-family: "Abel", Arial, sans-serif;
+			font-weight: 400;
+			font-size: 40px;
+		}
+
+		.margin-base-vertical {
+			margin: 40px 0;
+		}

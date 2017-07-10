@@ -7,34 +7,40 @@
 
         <title>Analyzing Shakespeare</title>
 
-        <!-- CSS -->
-        <!-- Bootstrap -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <!-- Blog -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-
-        <!-- JavaScript -->
-        <!-- jQuery -->
         <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <!-- Bootstrap -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    	<link href='http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600' rel='stylesheet'>
+        
+        <style>
+		html {
+			background: url(http://foodiecards.com/wp-content/uploads/2015/09/Website-Background.jpg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+
+		body {
+			font-size: 16px;
+			font-family: "Open Sans",serif;
+			background: transparent;
+		}
+
+		h1 {
+			font-family: "Abel", Arial, sans-serif;
+			font-weight: 400;
+			font-size: 40px;
+		}
+	    </style>
     </head>
 
     <body>
         <div class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="{{ url_for('select') }}">Analyzing Shakespeare </a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                    </ul>
                 </div>
             </div>
         </div>
@@ -43,4 +49,5 @@
             {% block content %}{% endblock %}
         </div>
     </body>
+    
 </html>
