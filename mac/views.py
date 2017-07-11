@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 from . import app
 import requests
 import xml.etree.ElementTree as ET
-from . import macbeth
+from . import shake
 import pygal
 from pygal.style import DefaultStyle
 
@@ -28,7 +28,7 @@ def results():
             error = "That url doesn't have the right xml format :("
         )
 
-    results = macbeth.parse_play(tree)
+    results = shake.parse_play(tree)
     median = results[len(results)//2][1]
     above = [x for x in results if x[1] > median]
     below = [x for x in results if x[1] <= median]
